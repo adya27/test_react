@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.container input {
+  margin: 5px;
+}
+.container button {
+  width: 80px;
+  padding: 5px;
+}
+
+.container p {
+  margin: 5px;
+  padding: 5px;
+}

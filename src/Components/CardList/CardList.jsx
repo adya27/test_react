@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import { getPasswords } from "../../redux/card/card-selectors";
 import { getCurrentUserId } from "../../redux/auth/auth-selectors";
+import styles from "./CardList.module.css";
 
 export default function CardList() {
   const passwords = useSelector(getPasswords);
@@ -13,7 +14,7 @@ export default function CardList() {
     (card) => card.owner === currentUserId
   );
   return (
-    <ul>
+    <ul className={styles.container}>
       {currentUserPasswords.length !== 0 &&
         passwords.map((card) => <Card key={card.id} card={card} />)}
     </ul>

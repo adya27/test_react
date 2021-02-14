@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
 import {
@@ -6,6 +7,7 @@ import {
   editCard,
   togglePassword,
 } from "../../redux/card/card-reducers";
+import styles from "./Card.module.css";
 
 export default function Card({ card }) {
   const dispatch = useDispatch();
@@ -21,18 +23,20 @@ export default function Card({ card }) {
     dispatch(editCard(card));
   };
   return (
-    <li>
-      <p>site {card.name}</p>
-      <p onClick={handleClickPassword}>
-        password{" "}
+    <li className={styles.container}>
+      <p>site: {card.name}</p>
+      <p className={styles.clickable} onClick={handleClickPassword}>
+        password:{" "}
         {card.isVisible ? card.password : "*".repeat(card.password.length)}
       </p>
-      <button onClick={handleEditCard} type="button">
-        edit
-      </button>
-      <button onClick={handleDeleteCard} type="button">
-        delete
-      </button>
+      <div className={styles.buttons}>
+        <Button onClick={handleEditCard} type="button">
+          edit
+        </Button>
+        <Button onClick={handleDeleteCard} type="button">
+          delete
+        </Button>
+      </div>
     </li>
   );
 }

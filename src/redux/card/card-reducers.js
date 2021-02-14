@@ -23,28 +23,39 @@ const modalSlice = createSlice({
   },
 });
 
+const sortPasswordsByName = (array) => {
+  if (array.length > 1) {
+    return array.sort((a, b) =>
+      a.name[0].toLowerCase() >= b.name[0].toLowerCase() ? 1 : -1
+    );
+  } else return array;
+};
+
 const passwordsSlice = createSlice({
   name: "passwords",
   initialState: [],
   reducers: {
     addPassword(state, action) {
       state.push(action.payload);
+      sortPasswordsByName(state);
     },
     deletePassword(state, action) {
-      return state.filter((card) => card.id !== action.payload);
+      return sortPasswordsByName(
+        state.filter((card) => card.id !== action.payload)
+      );
     },
     editPassword(state, action) {
-      return [
+      return sortPasswordsByName([
         ...state.filter((card) => card.id !== action.payload.id),
         action.payload,
-      ];
+      ]);
     },
     togglePassword(state, action) {
       const currentPassword = state.find((card) => card.id === action.payload);
-      return [
+      return sortPasswordsByName([
         ...state.filter((card) => card.id !== action.payload),
         { ...currentPassword, isVisible: !currentPassword.isVisible },
-      ];
+      ]);
     },
   },
 });

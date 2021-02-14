@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { editPassword, closeModal } from "../../redux/card/card-reducers";
 import { getPassword, getName, getId } from "../../redux/card/card-selectors";
 import { getCurrentUserId } from "../../redux/auth/auth-selectors";
-// import nextId from "react-id-generator";
+import styles from "./Modal.module.css";
+import { Button } from "react-bootstrap";
 
 export default function Modal() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export default function Modal() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
         <input
           placeholder="name"
           name="name"
@@ -49,10 +50,10 @@ export default function Modal() {
         />
         {errors.password && <span>This field is required</span>}
 
-        <input type="submit" />
-        <button onClick={handleClose} type="button">
+        <input value="save and close" type="submit" />
+        <Button className={styles.button} onClick={handleClose} type="button">
           close
-        </button>
+        </Button>
       </form>
     </div>
   );

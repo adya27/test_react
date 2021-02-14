@@ -5,6 +5,7 @@ import nextId from "react-id-generator";
 
 import { addPassword } from "../../redux/card/card-reducers";
 import { getCurrentUserId } from "../../redux/auth/auth-selectors";
+import styles from "./AddCardForm.module.css";
 
 export default function AddCardForm() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function AddCardForm() {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
         <input
           placeholder="name"
           name="name"

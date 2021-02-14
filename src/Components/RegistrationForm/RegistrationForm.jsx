@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { addUser } from "../../redux/auth/auth-reducers";
 import { getAllUsers } from "../../redux/auth/auth-selectors";
+import styles from "./RegistrationForm.module.css";
 
 export default function RegistrationForm() {
   const notify = () => toast.warn("a user with this email already exists!");
@@ -26,7 +27,7 @@ export default function RegistrationForm() {
   });
 
   const onSubmit = (data) => {
-    data.id = nextId();
+    data.id = nextId("user");
     dispatch(addUser(data));
   };
 
@@ -48,7 +49,7 @@ export default function RegistrationForm() {
   return (
     <>
       <ToastContainer />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
         <input
           name="name"
           type="name"
@@ -75,7 +76,7 @@ export default function RegistrationForm() {
 
         {errors.password && <span>This field is required</span>}
 
-        <input type="submit" disabled={buttonDisabled} />
+        <input value="Sign up" type="submit" disabled={buttonDisabled} />
       </form>
     </>
   );

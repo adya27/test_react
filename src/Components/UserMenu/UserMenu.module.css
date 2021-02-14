@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-end;
+  padding: 5px 40px;
+  margin-bottom: 20px;
+  background-color: lightgray;
+}
+
+.container input {
+  margin: 5px;
+}
+
+.container :last-child {
+  padding: 3px 20px;
+}

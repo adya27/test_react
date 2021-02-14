@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+button {
+  margin: 10px;
+}
+
+p {
+  color: gray;
+}
