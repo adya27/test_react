@@ -3,7 +3,3 @@ export const getPassword = (state) => state?.modal?.password;
 export const getId = (state) => state?.modal?.id;
 export const getPasswords = (state) => state?.passwords;
 export const getIsModalOpen = (state) => state.modal.modalIsOpen;
-export const getCurrentUserName = (state) => state.users.currentUser.name;
-export const getCurrentUserId = (state) => state.users.currentUser.id;
-export const getIsLoggedIn = (state) => state.users.isLoggedIn;
-export const getAllUsers = (state) => state.users.allUsers;

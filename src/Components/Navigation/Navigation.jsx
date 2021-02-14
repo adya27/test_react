@@ -1,25 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Navigation() {
+  let { pathname } = useLocation();
+
   return (
     <nav>
       <ul>
-        <li>
-          <NavLink exact to="/login">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink exact to="/registration">
-            Registration
-          </NavLink>
-        </li>
-        <li>
-          <NavLink exact to="/">
-            Main
-          </NavLink>
-        </li>
+        {pathname !== "/login" && (
+          <li>
+            <NavLink exact to="/login">
+              Have already account? Login!
+            </NavLink>
+          </li>
+        )}
+        {pathname !== "/registration" && (
+          <li>
+            <NavLink exact to="/registration">
+              Don't have an account? Sign up!
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );

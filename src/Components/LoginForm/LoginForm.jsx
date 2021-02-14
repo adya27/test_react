@@ -1,9 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/reducers";
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => dispatch(loginUser(data));
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input

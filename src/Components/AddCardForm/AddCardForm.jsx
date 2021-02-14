@@ -1,16 +1,22 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { addPassword } from "../../redux/reducers";
+import { useDispatch, useSelector } from "react-redux";
 import nextId from "react-id-generator";
+
+import { addPassword } from "../../redux/card/card-reducers";
+import { getCurrentUserId } from "../../redux/auth/auth-selectors";
 
 export default function AddCardForm() {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
+  const ownerId = useSelector(getCurrentUserId);
+
+  const onSubmit = (data, e) => {
+    data.owner = ownerId;
     data.id = nextId();
     data.isVisible = false;
     dispatch(addPassword(data));
+    e.target.reset();
   };
   return (
     <div>
@@ -31,7 +37,7 @@ export default function AddCardForm() {
         />
         {errors.password && <span>This field is required</span>}
 
-        <input type="submit" />
+        <input type="submit" value="Add a card" />
       </form>
     </div>
   );

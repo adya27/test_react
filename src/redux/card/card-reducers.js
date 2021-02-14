@@ -1,11 +1,5 @@
 import { combineReducers, createSlice } from "@reduxjs/toolkit";
 
-const usersInitialState = {
-  isLoggedIn: false,
-  allUsers: [],
-  currentUser: {},
-};
-
 const modalInitialState = {
   modalIsOpen: false,
   name: "",
@@ -25,31 +19,6 @@ const modalSlice = createSlice({
     },
     closeModal(state, action) {
       state.modalIsOpen = false;
-    },
-  },
-});
-
-const usersSlice = createSlice({
-  name: "users",
-  initialState: usersInitialState,
-  reducers: {
-    addUser(state, action) {
-      state.allUsers.push(action.payload);
-      state.currentUser = action.payload;
-      state.isLoggedIn = true;
-    },
-    loginUser(state, { payload }) {
-      const userMatchedByEmail = state.allUsers.find(
-        (user) => user.email === payload.email
-      );
-      if (userMatchedByEmail?.password === payload.password) {
-        state.isLoggedIn = true;
-        state.currentUser = userMatchedByEmail;
-      }
-    },
-    logOutUser(state) {
-      state.isLoggedIn = false;
-      state.currentUser = {};
     },
   },
 });
@@ -80,13 +49,9 @@ const passwordsSlice = createSlice({
   },
 });
 
-const rootReducer = combineReducers({
-  users: usersSlice.reducer,
-  passwords: passwordsSlice.reducer,
-  modal: modalSlice.reducer,
-});
+export const passwords = passwordsSlice.reducer;
+export const modal = modalSlice.reducer;
 
-export const { addUser, loginUser, logOutUser } = usersSlice.actions;
 export const { editCard, closeModal } = modalSlice.actions;
 export const {
   addPassword,
@@ -94,4 +59,3 @@ export const {
   editPassword,
   togglePassword,
 } = passwordsSlice.actions;
-export default rootReducer;

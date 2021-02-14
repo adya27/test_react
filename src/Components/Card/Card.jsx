@@ -8,6 +8,7 @@ export default function Card({ card }) {
     dispatch(deletePassword(card.id));
   };
   const handleClickPassword = () => {
+    console.log("click", card.id);
     dispatch(togglePassword(card.id));
   };
 

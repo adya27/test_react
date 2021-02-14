@@ -1,25 +1,25 @@
 import { Route, Switch } from "react-router-dom";
 
 import "./App.css";
-import Navigation from "./Components/Navigation/Navigation";
 import Login from "./Views/Login";
 import Registration from "./Views/Registration";
 import Main from "./Views/Main";
+import PrivateRoute from "./Components/PrivatRoute/PrivateRoute";
+import PublicRoute from "./Components/PublicRoute/PublicRoute";
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
       <Switch>
-        <Route path="/login">
+        <PublicRoute path="/login">
           <Login />
-        </Route>
-        <Route path="/registration">
+        </PublicRoute>
+        <PublicRoute path="/registration">
           <Registration />
-        </Route>
-        <Route path="/">
+        </PublicRoute>
+        <PrivateRoute path="/">
           <Main />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </div>
   );
