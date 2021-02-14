@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import nextId from "react-id-generator";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../../redux/reducers";
-import { getAllUsers } from "../../redux/selectors";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { addUser } from "../../redux/auth/auth-reducers";
+import { getAllUsers } from "../../redux/auth/auth-selectors";
 
 export default function RegistrationForm() {
   const notify = () => toast.warn("a user with this email already exists!");

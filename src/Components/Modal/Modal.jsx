@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { editPassword, closeModal } from "../../redux/reducers";
-import { getPassword, getName, getId } from "../../redux/selectors";
+
+import { editPassword, closeModal } from "../../redux/card/card-reducers";
+import { getPassword, getName, getId } from "../../redux/card/card-selectors";
+import { getCurrentUserId } from "../../redux/auth/auth-selectors";
 // import nextId from "react-id-generator";
 
 export default function Modal() {
@@ -10,9 +12,11 @@ export default function Modal() {
   const password = useSelector(getPassword);
   const name = useSelector(getName);
   const id = useSelector(getId);
+  const owner = useSelector(getCurrentUserId);
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
+    data.owner = owner;
     data.id = id;
     data.isVisible = false;
     console.log(" new data", data);

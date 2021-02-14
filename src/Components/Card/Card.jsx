@@ -1,6 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deletePassword, editCard, togglePassword } from "../../redux/reducers";
+
+import {
+  deletePassword,
+  editCard,
+  togglePassword,
+} from "../../redux/card/card-reducers";
 
 export default function Card({ card }) {
   const dispatch = useDispatch();

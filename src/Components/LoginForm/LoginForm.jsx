@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/reducers";
+
+import { loginUser } from "../../redux/auth/auth-reducers";
 
 export default function LoginForm() {
   const dispatch = useDispatch();

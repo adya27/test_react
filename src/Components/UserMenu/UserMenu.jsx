@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCurrentUserName } from "../../redux/selectors";
-import { logOutUser } from "../../redux/reducers";
+
+import { getCurrentUserName } from "../../redux/auth/auth-selectors";
+import { logOutUser } from "../../redux/auth/auth-reducers";
 
 export default function UserMenu() {
   const name = useSelector(getCurrentUserName);
