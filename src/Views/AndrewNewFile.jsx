@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function AndrewNewFile() {
-  return <div></div>;
+  return (
+    <div>
+      <p> some text</p>
+    </div>
+  );
 }
